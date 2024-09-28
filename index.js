@@ -1,12 +1,11 @@
-// PushEvent | IssuesEvent onde o campo action seja opened | WatchEvent
 const readline = require('node:readline');
 const { stdin: input, stdout: output } = require('node:process');
 
 const rl = readline.createInterface({ input, output });
 
-rl.question('Qual é o teu nome de usuario do GitHub? ', (answer) => {
+rl.question('What is your GitHub username? ', (answer) => {
     if(answer === '') {
-        console.log('digite o seu nome de usuario phá.!');
+        console.log('enter your username pls.!');
         rl.close()
         return
     } 
@@ -41,13 +40,13 @@ async function githubUserActivity(username) {
         outputTerminal(commits, openIssue, starred)
         
     } catch (error) {
-        console.error(`Ocorreu um erro, tente novamente mais tarde.! - ${error}`);
+        console.error(`An error occurred, please try again later.! - ${error}`);
     }    
 }
 
 function outputTerminal(commits, issue, star) {
     if (commits.length === 0) {
-        console.log('Nenhum commit feito');
+        console.log('No commits made');
     } else {
         console.log('Commits:');
         for (let index = 0; index < 3; index++) {
@@ -56,16 +55,14 @@ function outputTerminal(commits, issue, star) {
     }
     console.log('--------------//--------------');
     if (issue.length === 0) {
-        console.log('Nenhuma Issue aberta');
+        console.log('No Issues open');
     } else {
-        console.log(`Foi aberta ${issue.length} issue`);
+        console.log(`${issue.length} issues were opened`);
     }
     console.log('--------------//--------------');
     if (star.length === 0) {
-        console.log('Nenhum repositorio com estrela');
+        console.log('No starred repositories');
     } else {
-        console.log(`${star.length} repositorios com estrela`);
+        console.log(`${star.length} starred repositories`);
     }
 }
-
-// https://roadmap.sh/projects/github-user-activity
